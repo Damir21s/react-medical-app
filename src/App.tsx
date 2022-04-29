@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Auth } from './components/auth/Auth'
+import { ContactsPage } from './components/contactsPage/ContactsPage'
+import { Header } from './components/header/header'
+import { MainPage } from './components/mainPage/MainPage'
+import { ModalWindow } from './components/modalWindow/ModalWindow'
+import { PersonalPage } from './components/personalPage/PersonalPage'
+import { Line } from './styled/styled'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export const App = () => {
+  const [modalActive, setModalActive] = useState(false)
+  const [isAuth, setIsAuth] = useState(localStorage.getItem('dataAuth') ? true : false)
+  useEffect(() => {
+    setModalActive(false)
+  }, [isAuth])
+  return <>
+    <BrowserRouter>
+      <Header setIsAuth={setIsAuth} isAuth={isAuth} setModalActive={setModalActive} />
+      <Line />
+      <main>
+        <Routes>
+          <Route path='/' element={<MainPage setIsAuth={setIsAuth} isAuth={isAuth} setModalActive={setModalActive} />} />
+          {isAuth && <Route path='/user'
+            element={
+              <PersonalPage setIsAuth={setIsAuth}
+                isAuth={isAuth}
+                setModalActive={setModalActive} />} />
+          }
+          <Route path='/contacts' element={<ContactsPage />} />
+          <Route path="*" element={<h1>404 Not Found</h1>} />
+        </Routes>
+      </main>
+      <ModalWindow modalActive={modalActive} setModalActive={setModalActive}>
+        <Auth setIsAuth={setIsAuth} isAuth={isAuth} setModalActive={setModalActive} />
+      </ModalWindow>
+    </BrowserRouter>
+  </>
+
 }
-
-export default App;
