@@ -1,3 +1,13 @@
+Тестовое задание для Aveds.
+Используемый стек: React, TypeScript, SCSS, Styled Components 
+
+Ссылка на GitHub Pages: 
+https://damir21s.github.io/test-task3/
+(Нужно кликунть на лого чтобы перешло на главную страницу) 
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
