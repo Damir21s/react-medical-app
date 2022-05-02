@@ -1,10 +1,6 @@
 # Тестовое задание для Aveds.
 Используемый стек: React, TypeScript, SCSS, Styled Components 
 
-Ссылка на GitHub Pages: 
-https://damir21s.github.io/test-task3/
-(Нужно кликунть на лого чтобы перейти на главную страницу) 
-
 В src/data json файл с данными для авторизации
 
 
