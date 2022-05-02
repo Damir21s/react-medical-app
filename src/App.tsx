@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Auth } from './components/auth/Auth'
-import { ContactsPage } from './components/contactsPage/ContactsPage'
-import { Header } from './components/header/header'
-import { MainPage } from './components/mainPage/MainPage'
+import { AuthPages } from './pages/authPage/AuthPages'
+import { ContactsPage } from './pages/contactsPage/ContactsPage'
+import { Header } from './components/header/Header'
+import { MainPage } from './pages/mainPage/MainPage'
 import { ModalWindow } from './components/modalWindow/ModalWindow'
-import { PersonalPage } from './components/personalPage/PersonalPage'
+import { PersonPage } from './pages/personPage/PersonPage'
 import { Line } from './styled/styled'
 
 export const App = () => {
@@ -23,7 +23,7 @@ export const App = () => {
           <Route path='/' element={<MainPage setIsAuth={setIsAuth} isAuth={isAuth} setModalActive={setModalActive} />} />
           {isAuth && <Route path='/user'
             element={
-              <PersonalPage setIsAuth={setIsAuth}
+              <PersonPage setIsAuth={setIsAuth}
                 isAuth={isAuth}
                 setModalActive={setModalActive} />} />
           }
@@ -32,7 +32,7 @@ export const App = () => {
         </Routes>
       </main>
       <ModalWindow modalActive={modalActive} setModalActive={setModalActive}>
-        <Auth setIsAuth={setIsAuth} isAuth={isAuth} setModalActive={setModalActive} />
+        <AuthPages setIsAuth={setIsAuth} isAuth={isAuth} setModalActive={setModalActive} />
       </ModalWindow>
     </BrowserRouter>
   </>

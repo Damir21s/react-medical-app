@@ -7,4 +7,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
+:root{
+  /* Typography */
+  --fs-ms: 14px;
+  --fs-md: 16px;
+  --fw-light:400;
+  --fw-normal: 600;
+  --fw-bold: 700;
+  --color-orange: #FF685B;
+  --color-gray: #737373;
+  --radius: 7px;
+}

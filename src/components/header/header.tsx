@@ -7,6 +7,7 @@ import { ComponentType } from '../../types/types'
 
 const HeaderWrapper = styled.div`
    padding: 29px 0px 18px 0px;
+
    @media (max-width: 620px) {
     padding-bottom:20px;
    }

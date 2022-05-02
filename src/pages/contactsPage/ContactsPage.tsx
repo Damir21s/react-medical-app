@@ -1,4 +1,3 @@
-import React from 'react'
 import { SectionWrapper, StyledPage } from '../../styled/styled'
 
 export const ContactsPage = () => {

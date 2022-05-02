@@ -14,22 +14,24 @@ const InfoBlockWrapper = styled.div<{ borderb?: string }>`
   section{
     margin: 35px 40px 35px 40px;
     h3{
-      font-weight: 700;
-      font-size: 16px;
+      font-weight: var(--fw-bold);
+      font-size: var(--fs-md);
       letter-spacing: 0.4px;
       line-height: 24px;
     }
     p{
       margin-top: 20px;
-      color:#737373;
-      font-weight: 400;
-      font-size: 14px;
+      color: var(--color-gray);
+      font-weight: var(--fw-light);
+      font-size: var(--fs-ms);
       line-height: 20px;
     }
+
     @media (max-width: 620px) {
     margin: 15px 40px 15px 40px;
+    }
   }
-  }
+  
   @media (max-width: 620px) {
     margin: 0px 14px 50px 14px;
     height: 228px;
@@ -44,22 +46,22 @@ export const MainPage: React.FC<ComponentType> = (props) => {
       <StyledFlex margin='-9px 0px 0px 0px' jc='none'>
         {props.isAuth ?
           <StyledButton
-            marginr='10px' fs='14px' fw='700'
-            bgc='#FF685B' color='#FFFFFF'
+            marginr='10px' fs='var(--fs-ms)' fw='var(--fw-bold)'
+            bgc='var(--color-orange)' color='white'
             onClick={() => {
               localStorage.clear()
               props.setIsAuth(false)
               navigate('/')
             }}>Выйти</StyledButton> :
           <StyledButton
-            marginr='10px' fs='14px' fw='700'
-            bgc='#FF685B' color='#FFFFFF'
+            marginr='10px' fs='var(--fs-ms)' fw='var(--fw-bold)'
+            bgc='var(--color-orange)' color='white'
             onClick={() => props.setModalActive(true)}>Войти</StyledButton>
         }
         <Link to='/contacts'>
           <StyledButton
-            fs='14px'
-            fw='700'>Контакты</StyledButton>
+            fs='var(--fs-ms)'
+            fw='var(--fw-bold)'>Контакты</StyledButton>
         </Link>
       </StyledFlex>
     </SectionWrapper>
@@ -68,26 +70,26 @@ export const MainPage: React.FC<ComponentType> = (props) => {
         <section>
           <img alt='icon1' src={icon1} />
           <h3>Онлайн-прием</h3>
-          <Line borderb='2px solid #FF685B' widht='50px' />
+          <Line borderb='2px solid var(--color-orange)' widht='50px' />
           <p>Рыба текст</p>
         </section>
       </InfoBlockWrapper>
-        <InfoBlockWrapper>
-          <section >
-            <img alt='icon2' src={icon2} />
-            <h3>Экстренный Случай</h3>
-            <Line borderb='2px solid #FF685B' widht='50px' />
-            <p>Рыба текст</p>
-          </section>
-        </InfoBlockWrapper>
-        <InfoBlockWrapper>
-          <section>
-            <img alt='icon3' src={icon3} />
-            <h3>Лечение рака</h3>
-            <Line borderb='2px solid #FF685B' widht='50px' />
-            <p>Рыба текст</p>
-          </section>
-        </InfoBlockWrapper>
+      <InfoBlockWrapper>
+        <section >
+          <img alt='icon2' src={icon2} />
+          <h3>Экстренный Случай</h3>
+          <Line borderb='2px solid var(--color-orange)' widht='50px' />
+          <p>Рыба текст</p>
+        </section>
+      </InfoBlockWrapper>
+      <InfoBlockWrapper>
+        <section>
+          <img alt='icon3' src={icon3} />
+          <h3>Лечение рака</h3>
+          <Line borderb='2px solid var(--color-orange)' widht='50px' />
+          <p>Рыба текст</p>
+        </section>
+      </InfoBlockWrapper>
     </SectionWrapper>
   </StyledPage>
 
