@@ -1,10 +1,11 @@
-import { SectionWrapper, StyledPage } from '../../styled/styled'
+import { Container } from '../../styled/Container'
+import { Wrapper } from '../../styled/Wrapper'
 
 export const ContactsPage = () => {
-  return <StyledPage >
-    <SectionWrapper margint='187px' ls ='3px'>
+  return <Container >
+    <Wrapper margint='187px' ls ='3px'>
       <h1>Контакты</h1>
-    </SectionWrapper>
-  </StyledPage>
+    </Wrapper>
+  </Container>
 }
 

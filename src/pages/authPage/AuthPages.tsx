@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { useFormik } from 'formik'
+import { FormikProps, useFormik } from 'formik'
 import * as yup from 'yup'
-import { StyledButton } from '../../styled/styled'
-import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { ComponentType } from '../../types/types'
+import { Button } from '../../styled/Button'
+import { useNavigate } from 'react-router-dom'
 
 const StyledInput = styled.input`
     display: block;
@@ -27,37 +27,43 @@ const StyledError = styled.p`
     @media (max-width: 620px) {
         font-size: 11px;
      }
+
 `
+interface FormikValues {
+    login: string
+    password: string
+}
 
 export const AuthPages: React.FC<ComponentType> = (props) => {
-    const data = require('../../data/data.json')
+    const [isUserFound, setIsUserFound] = useState<boolean | null>(null)
     const navigate = useNavigate()
-    const [isExistUser, setIsExistUser] = useState('')
-    const checkLogin = (values: { login: string, password: string }) => {
-        const dataAuth = data.find((item: { login: string, password: string }) =>
-            item.login === values.login && item.password === values.password)
-        if (dataAuth) {
+    const AuthFunction = (login: string, password: string) => {
+        const data = require('../../data.json')
+        const auth = data.find((item: { login: string, password: string }) =>
+            item.login === login && item.password === password)
+        if (auth) {
             debugger;
             const authDataPerson = {
-                'login': values.login,
-                'password': values.password
+                'login': login,
+                'password': password
             }
             localStorage.setItem('dataAuth', JSON.stringify(authDataPerson))
-            localStorage.setItem('name', dataAuth.name)
-            props.setIsAuth(true)
+            localStorage.setItem('name', auth.name)
+            props.setIsLoggedIn(true)
+            setIsUserFound(true)
             navigate('/user')
         }
         else {
-            setIsExistUser('false')
+            setIsUserFound(false)
         }
     }
-    const formik = useFormik({
+    const formik: FormikProps<FormikValues> = useFormik<FormikValues>({
         initialValues: {
             login: '',
             password: '',
         },
         onSubmit: values => {
-            checkLogin(values)
+            AuthFunction(values.login, values.password)
         },
         validationSchema: yup.object().shape({
             login: yup.string().min(5).max(20).required('Enter login'),
@@ -84,12 +90,12 @@ export const AuthPages: React.FC<ComponentType> = (props) => {
                 value={formik.values.password}
             />
             <StyledError>{formik.errors.password}</StyledError>
-            {isExistUser === 'false' && !formik.errors.password && <StyledError>Пользователь не найден</StyledError>}
-            <StyledButton type="submit" padding='8px 60px 8px 60px'
+            {isUserFound === false && !formik.errors.password && <StyledError>Пользователь не найден</StyledError>}
+            <Button type="submit" padding='8px 60px 8px 60px'
                 onClick={() => {
-                    props.setModalActive(!props.isAuth)
+                    props.setModalActive(!props.isLoggedIn)
                 }}
-                disabled={!formik.isValid}>Войти</StyledButton>
+                disabled={!formik.isValid}>Войти</Button>
         </form>
     );
 };
