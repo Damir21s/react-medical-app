@@ -6,7 +6,7 @@ import { MainPage } from './pages/mainPage/MainPage'
 import { ModalWindow } from './components/modalWindow/ModalWindow'
 import { PersonPage } from './pages/personPage/PersonPage'
 import { Line } from './styled/Line'
-import { Header } from './components/header/Header'
+import { Header } from './components/header/header'
 
 export const App = () => {
   const [modalActive, setModalActive] = useState(false)
