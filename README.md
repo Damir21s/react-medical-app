@@ -1,4 +1,3 @@
-# Тестовое задание для Aveds.
 Используемый стек: React, TypeScript, SCSS, Styled Components 
 
 В src/data json файл с данными для авторизации
